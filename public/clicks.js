@@ -73,6 +73,7 @@ buttonBuscarEspecifico.addEventListener('click', function(e) {
 
 
 buttonQueBusca.addEventListener('click', function(e) {
+    // TODO: aca falta explicar qué es lo que se busca hardcodeado.
     divResultados.innerHTML = "<p> Buscar especifico busca... </p>";
     return;
 });
