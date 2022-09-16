@@ -8,8 +8,8 @@ router.get('/public',(req,res) => {
 })
 
 // Obtener las peliculas solicitadas
-router.get('/peliculas', (req, res) => {
-  getPelis()
+router.get('/peliculas/:term', (req, res) => {
+  getPelis(req.params.term)
     .then((items) => {
       items = items.map((item) => ({
         title: item.title

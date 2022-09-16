@@ -3,7 +3,9 @@ const button = document.getElementById('buttonBuscar');
 
 button.addEventListener('click', function(e) {
     // realizar la busqueda y generar la lista 
-    fetch('/peliculas', {method: 'GET'})
+    const term = document.getElementById('input_field').value;
+    //console.log(title)
+    fetch('/peliculas/'+term, {method: 'GET'})
     .then(function(response) {
       if(response.ok) {
         return response.json();

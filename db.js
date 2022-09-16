@@ -16,17 +16,19 @@ const insertItem = (item) => {
 }
 
 
-const getPelis = () => {
-  // hardcodeado: peliculas con "Toy" en el titulo
-  const filter = {
-   'title':{$regex: /Toy/}
-  };
+const getPelis = (term) => {
+
+  const filter = [
+    { 'title': {$regex: term} },
+    { 'fullplot': {$regex: term}},
+    { 'cast': {$regex: term}}
+  ]
   const projection = {
     'title': 1, 
     '_id': 0
   };
   const coll = db.collection('movies');
-  const cursor = coll.find(filter, { projection });
+  const cursor = coll.find({"$or":filter}, { projection });
   const result = cursor.toArray();
   return result;
 }
