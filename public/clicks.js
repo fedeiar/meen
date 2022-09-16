@@ -16,10 +16,14 @@ button.addEventListener('click', function(e) {
         let lista = "";
         data.forEach((peli)=>
         {
+            rating_IMDB = peli.imdb != undefined ? peli.imdb.rating : "unavailable";
+            rating_tomatoes = peli.tomatoes != undefined && peli.tomatoes.viewer != undefined ? peli.tomatoes.viewer.rating : "unavailable";
+
             lista = lista + "<p> Title: " + peli.title + "</p>" +
-            "<p> Year:" + peli.year + "</p>" + 
-            "<p> Rating IMDB:" + peli.imdb.rating + "</p>" +
-            "<p> Rating Tomatoes:" + peli.tomatoes.dvd + "</p>" +
+            "<p> Year: " + peli.year + "</p>" + 
+            "<p> Rating IMDB: " + rating_IMDB + "</p>" +
+            "<p> Rating Tomatoes: " + rating_tomatoes + "</p>" +
+            "<img src="+peli.poster+"></img>" +
             "<hr></hr>";
         })
         const divRes = document.getElementById("resultados");

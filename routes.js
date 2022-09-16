@@ -16,6 +16,7 @@ router.get('/peliculas/:term', (req, res) => {
         year: item.year,
         imdb: item.imdb,
         tomatoes: item.tomatoes,
+        poster: item.poster
       }))
       res.json(items)
     })
