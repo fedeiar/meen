@@ -24,7 +24,11 @@ const getPelis = (term) => {
     { 'cast': {$regex: term}}
   ]
   const projection = {
-    'title': 1, 
+    'title': 1,
+    'year': 1,
+    'imdb': 1,
+    'tomatoes': 1,
+    'poster': 1,
     '_id': 0
   };
   const coll = db.collection('movies');

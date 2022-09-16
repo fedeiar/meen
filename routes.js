@@ -12,7 +12,10 @@ router.get('/peliculas/:term', (req, res) => {
   getPelis(req.params.term)
     .then((items) => {
       items = items.map((item) => ({
-        title: item.title
+        title: item.title,
+        year: item.year,
+        imdb: item.imdb,
+        tomatoes: item.tomatoes,
       }))
       res.json(items)
     })

@@ -16,7 +16,11 @@ button.addEventListener('click', function(e) {
         let lista = "";
         data.forEach((peli)=>
         {
-            lista = lista + "<p>" + peli.title + "</p>";
+            lista = lista + "<p> Title: " + peli.title + "</p>" +
+            "<p> Year:" + peli.year + "</p>" + 
+            "<p> Rating IMDB:" + peli.imdb.rating + "</p>" +
+            "<p> Rating Tomatoes:" + peli.tomatoes.dvd + "</p>" +
+            "<hr></hr>";
         })
         const divRes = document.getElementById("resultados");
         divRes.innerHTML = lista;
