@@ -17,7 +17,6 @@ const insertItem = (item) => {
 
 
 const getPelis = (term) => {
-
   const filter = [
     { 'title': {$regex: term} },
     { 'fullplot': {$regex: term}},
@@ -37,5 +36,23 @@ const getPelis = (term) => {
   return result;
 }
 
+const getPelisHardcodeado = () => {
+    const filter = { cast : {$in : ["Adam Sandler","Jim Carrey"]} , year : {$gte : 1995 , $lte : 2000}  , fullplot : {$regex : /father/}};
 
-module.exports = { init, insertItem, getPelis }
+    const projection = {
+        'title': 1,
+        'year': 1,
+        'imdb': 1,
+        'tomatoes': 1,
+        'poster': 1,
+        '_id': 0
+    };
+
+    const coll = db.collection('movies');
+    const cursor = coll.find(filter, { projection });
+    const result = cursor.toArray();
+    return result;
+}
+
+
+module.exports = { init, insertItem, getPelis, getPelisHardcodeado }

@@ -1,5 +1,5 @@
 const express = require('express')
-const { insertItem,  getPelis, getPelisT } = require('./db')
+const { insertItem,  getPelis, getPelisHardcodeado } = require('./db')
 
 const router = express.Router()
 
@@ -24,6 +24,25 @@ router.get('/peliculas/:term', (req, res) => {
       console.log(err)
       res.status(500).end()
     })
+})
+
+// Obtener las peliculas hardcodeadas
+router.get('/peliculas_hardcodeadas', (req, res) => {
+    getPelisHardcodeado()
+      .then((items) => {
+        items = items.map((item) => ({
+          title: item.title,
+          year: item.year,
+          imdb: item.imdb,
+          tomatoes: item.tomatoes,
+          poster: item.poster
+        }))
+        res.json(items)
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(500).end()
+      })
 })
 
 // Postear una pelicula
