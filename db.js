@@ -58,10 +58,25 @@ const getPelisHardcodeado = () => {
 const putCincoPelisRandom = () => {
 
     const coll = db.collection('movies');
-    const cursor = coll.aggregate([{ $sample: { size: 5 } }]);
+    const cursor = coll.aggregate([
+      {
+        '$sample': {
+          'size': 5
+        }
+      }, {
+        '$project': {
+          '_id': 0, 
+          'title': 1, 
+          'cast': 1, 
+          'plot': 1, 
+          'poster': 1, 
+          'year': 1
+        }
+      }
+    ]);
     const result = cursor.toArray()
     .then(function(items){
-        console.log(items);
+        console.log(items[0]);
     });
     return result;
 }
