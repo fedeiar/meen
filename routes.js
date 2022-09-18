@@ -1,5 +1,5 @@
 const express = require('express')
-const { insertItem,  getPelis, getPelisHardcodeado } = require('./db')
+const { insertItem,  getPelis, getPelisHardcodeado, putCincoPelisRandom } = require('./db')
 
 const router = express.Router()
 
@@ -48,7 +48,7 @@ router.get('/peliculas_hardcodeadas', (req, res) => {
 // Postear una pelicula
 router.post('/peliculas', (req, res) => {
   const item = req.body
-  console.log(req.body)
+  putCincoPelisRandom();
   //const result = itemSchema.validate(item)
   const result = item
   if (result.error) {

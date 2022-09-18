@@ -55,4 +55,15 @@ const getPelisHardcodeado = () => {
 }
 
 
-module.exports = { init, insertItem, getPelis, getPelisHardcodeado }
+const putCincoPelisRandom = () => {
+
+    const coll = db.collection('movies');
+    const cursor = coll.aggregate([{ $sample: { size: 5 } }]);
+    const result = cursor.toArray()
+    .then(function(items){
+        console.log(items);
+    });
+    return result;
+}
+
+module.exports = { init, insertItem, getPelis, getPelisHardcodeado, putCincoPelisRandom }

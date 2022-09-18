@@ -2,6 +2,7 @@
 const button = document.getElementById('buttonBuscar');
 const buttonBuscarEspecifico = document.getElementById('buttonBuscarEspecifico');
 const buttonQueBusca = document.getElementById('buttonQueBusca');
+const buttonQuePostea = document.getElementById('buttonQuePostea');
 
 const divResultados = document.getElementById("resultados");
 
@@ -73,7 +74,22 @@ buttonBuscarEspecifico.addEventListener('click', function(e) {
 
 
 buttonQueBusca.addEventListener('click', function(e) {
-    // TODO: aca falta explicar qué es lo que se busca hardcodeado.
     divResultados.innerHTML = '<p> Busca todas las películas en las que haya participado Jim Carrey o Adam Sandler, entre los años 1995 y 2000, y que la trama completa incluya la palabra "father" </p>';
     return;
+});
+
+
+buttonQuePostea.addEventListener('click', function(e) {
+    fetch('/peliculas', {
+        method: 'POST',
+        body: null
+    })
+    .then(function(response) {
+        if(response.ok) {
+          console.log("se inserto ok!")
+        }else{
+            throw new Error('Request failed.');
+        }
+    })
+
 });
