@@ -68,17 +68,29 @@ const putCincoPelisRandom = () => {
           '_id': 0, 
           'title': 1, 
           'cast': 1, 
-          'plot': 1, 
+          'fullplot': 1, 
           'poster': 1, 
           'year': 1
         }
       }
     ]);
-    const result = cursor.toArray()
+    const peliculasRandom = cursor.toArray()
     .then(function(items){
-        console.log(items[0]);
+        console.log(items[3].poster);
+
+        // TODO: preguntar: está bien insertarlo aca o hay que insertarlo en otro lado?
+        // TODO: hacemos controles de nulos?
+        coll.insertOne({
+            "title": "TADW Presenta: "+items[0].title,
+            "cast": items[1].cast,
+            "fullplot": items[2].fullplot,
+            "poster": items[3].poster,
+            "year": items[4].year
+        });
     });
-    return result;
+
+    
+    return "ok!"
 }
 
 module.exports = { init, insertItem, getPelis, getPelisHardcodeado, putCincoPelisRandom }
