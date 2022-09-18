@@ -49,7 +49,8 @@ router.get('/peliculas_hardcodeadas', (req, res) => {
 router.post('/peliculas', (req, res) => {
   const item = req.body
   console.log(req.body)
-  const result = itemSchema.validate(item)
+  //const result = itemSchema.validate(item)
+  const result = item
   if (result.error) {
     console.log(result.error)
     res.status(400).end()

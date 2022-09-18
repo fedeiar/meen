@@ -74,6 +74,6 @@ buttonBuscarEspecifico.addEventListener('click', function(e) {
 
 buttonQueBusca.addEventListener('click', function(e) {
     // TODO: aca falta explicar qué es lo que se busca hardcodeado.
-    divResultados.innerHTML = "<p> Buscar especifico busca... </p>";
+    divResultados.innerHTML = '<p> Busca todas las películas en las que haya participado Jim Carrey o Adam Sandler, entre los años 1995 y 2000, y que la trama completa incluya la palabra "father" </p>';
     return;
 });
