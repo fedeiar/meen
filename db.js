@@ -78,8 +78,6 @@ const putCincoPelisRandom = () => {
     .then(function(items){
         console.log(items[3].poster);
 
-        // TODO: preguntar: está bien insertarlo aca o hay que insertarlo en otro lado?
-        // TODO: hacemos controles de nulos?
         coll.insertOne({
             "title": "TADW Presenta: "+items[0].title,
             "cast": items[1].cast,

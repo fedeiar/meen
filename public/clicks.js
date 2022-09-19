@@ -23,6 +23,7 @@ button.addEventListener('click', function(e) {
         {
             rating_IMDB = peli.imdb != undefined ? peli.imdb.rating : "unavailable";
             rating_tomatoes = peli.tomatoes != undefined && peli.tomatoes.viewer != undefined ? peli.tomatoes.viewer.rating : "unavailable";
+            //TODO: ver el de metacritic
 
             lista = lista + "<p> Title: " + peli.title + "</p>" +
             "<p> Year: " + peli.year + "</p>" + 
