@@ -74,9 +74,8 @@ const putCincoPelisRandom = () => {
         }
       }
     ]);
-    const peliculasRandom = cursor.toArray()
+    const result = cursor.toArray()
     .then(function(items){
-        console.log(items[3].poster);
 
         coll.insertOne({
             "title": "TADW Presenta: "+items[0].title,
@@ -85,10 +84,10 @@ const putCincoPelisRandom = () => {
             "poster": items[3].poster,
             "year": items[4].year
         });
-    });
+    }); 
 
     
-    return "ok!"
+    return "ok!";
 }
 
 module.exports = { init, insertItem, getPelis, getPelisHardcodeado, putCincoPelisRandom }

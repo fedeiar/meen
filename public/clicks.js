@@ -9,7 +9,6 @@ const divResultados = document.getElementById("resultados");
 button.addEventListener('click', function(e) {
     // realizar la busqueda y generar la lista 
     const term = document.getElementById('input_field').value;
-    //console.log(title)
     fetch('/peliculas/'+term, {method: 'GET'})
     .then(function(response) {
       if(response.ok) {
@@ -23,13 +22,15 @@ button.addEventListener('click', function(e) {
         {
             rating_IMDB = peli.imdb != undefined ? peli.imdb.rating : "unavailable";
             rating_tomatoes = peli.tomatoes != undefined && peli.tomatoes.viewer != undefined ? peli.tomatoes.viewer.rating : "unavailable";
-            //TODO: ver el de metacritic
+            rating_metaCritic = peli.metacritic != undefined ? peli.metacritic : "unavailable";
+            poster = peli.poster != undefined ? "<img src="+peli.poster+"></img>" : "<p> Poster: unavailable <p>"
 
             lista = lista + "<p> Title: " + peli.title + "</p>" +
             "<p> Year: " + peli.year + "</p>" + 
             "<p> Rating IMDB: " + rating_IMDB + "</p>" +
             "<p> Rating Tomatoes: " + rating_tomatoes + "</p>" +
-            "<img src="+peli.poster+"></img>" +
+            "<p> Rating MetaCritic: " + rating_metaCritic + "</p>" +
+            poster +
             "<hr></hr>";
         })
         divResultados.innerHTML = lista;
@@ -55,12 +56,15 @@ buttonBuscarEspecifico.addEventListener('click', function(e) {
         {
             rating_IMDB = peli.imdb != undefined ? peli.imdb.rating : "unavailable";
             rating_tomatoes = peli.tomatoes != undefined && peli.tomatoes.viewer != undefined ? peli.tomatoes.viewer.rating : "unavailable";
+            rating_metaCritic = peli.metacritic != undefined ? peli.metacritic : "unavailable";
+            poster = peli.poster != undefined ? "<img src="+peli.poster+"></img>" : "<p> Poster: unavailable <p>"
 
             lista = lista + "<p> Title: " + peli.title + "</p>" +
             "<p> Year: " + peli.year + "</p>" + 
             "<p> Rating IMDB: " + rating_IMDB + "</p>" +
             "<p> Rating Tomatoes: " + rating_tomatoes + "</p>" +
-            "<img src="+peli.poster+"></img>" +
+            "<p> Rating MetaCritic: " + rating_metaCritic + "</p>" +
+            poster +
             "<hr></hr>";
         })
         divResultados.innerHTML = lista;
@@ -87,7 +91,7 @@ buttonQuePostea.addEventListener('click', function(e) {
     })
     .then(function(response) {
         if(response.ok) {
-          console.log("se inserto ok!")
+            divResultados.innerHTML = "<p> Película insertada correctamente </p>"
         }else{
             throw new Error('Request failed.');
         }

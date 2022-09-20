@@ -47,23 +47,8 @@ router.get('/peliculas_hardcodeadas', (req, res) => {
 
 // Postear una pelicula
 router.post('/peliculas', (req, res) => {
-  const item = req.body
-  putCincoPelisRandom();
-  //const result = itemSchema.validate(item)
-  const result = item
-  if (result.error) {
-    console.log(result.error)
-    res.status(400).end()
-    return
-  }
-  insertItem(item)
-    .then(() => {
-      res.status(200).end()
-    })
-    .catch((err) => {
-      console.log(err)
-      res.status(500).end()
-    })
+  let message = putCincoPelisRandom();
+  res.status(200).send(message);
 })
 
 
